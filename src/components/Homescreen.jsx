@@ -60,9 +60,9 @@ class Homescreen extends Component {
         .toString(36)
         .substr(2, 9);
     body.name = this.state.chatname_now;
-
-    axios.post("http://localhost:5000/adduser", body).then(result => {});
-    // this.props.socket.emit("event_addNewChat", newchat.name, newchat.id);
+    axios.post("http://localhost:5000/addchat", body).then(result => {
+      this.setState({ chat_list: result.data });
+    });
   }
   render() {
     let { user_name } = this.state;
