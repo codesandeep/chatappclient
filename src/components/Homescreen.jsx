@@ -45,7 +45,11 @@ class Homescreen extends Component {
     this.setState({ chatname_now: "" });
   }
   removeFromChatList(id) {
-    this.props.socket.emit("event_removeChat", id);
+    let body={};
+    body.id=id;
+    axios.post("http://localhost:5000/removechat", body).then(result => {
+    this.setState({ chat_list: result.data });
+    });
   }
 
   addToChatList() {
